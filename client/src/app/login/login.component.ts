@@ -13,9 +13,6 @@ export class LoginComponent implements OnInit {
   constructor(private _apiService: ApiService, private _router: Router) { }
 
   ngOnInit() {
-    if (this._apiService.loggedInUser !== '') {
-      this._router.navigate(['/dashboard']);
-    }
   }
 
   login() {
