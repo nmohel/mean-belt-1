@@ -1,0 +1,46 @@
+<div class="top">
+  <a routerLink="/dashboard">Cancel</a>
+</div>
+<h2>Put the question and options here:</h2>
+<form #pollForm="ngForm">
+  <div>
+    Question: <input type="text" name="question" [(ngModel)]="newPoll.question" required minlength="8" #question="ngModel">
+    <span *ngIf="question.invalid && (question.dirty || question.touched)" class="errors">
+      <span *ngIf="question.errors.required">Question is required.</span>
+      <span *ngIf="question.errors.minlength">Question must be at least 8 characters long.</span>
+    </span>
+  </div>
+  <div>
+    Option 1: <input type="text" name="option1" [(ngModel)]="newPoll.options[0].value" required minlength="3" #option1="ngModel">
+    <span *ngIf="option1.invalid && (option1.dirty || option1.touched)" class="errors">
+      <span *ngIf="option1.errors.required">Option 1 is required.</span>
+      <span *ngIf="option1.errors.minlength">Option 1 must be at least 3 characters long.</span>
+    </span>
+  </div>
+  <div>
+    Option 2: <input type="text" name="option2" [(ngModel)]="newPoll.options[1].value" required minlength="3" #option2="ngModel">
+    <span *ngIf="option2.invalid && (option2.dirty || option2.touched)" class="errors">
+      <span *ngIf="option2.errors.required">Option 2 is required.</span>
+      <span *ngIf="option2.errors.minlength">Option 2 must be at least 3 characters long.</span>
+    </span>
+  </div>
+  <div>
+    Option 3: <input type="text" name="option3" [(ngModel)]="newPoll.options[2].value" required minlength="3" #option3="ngModel">
+    <span *ngIf="option3.invalid && (option3.dirty || option3.touched)" class="errors">
+        <span *ngIf="option3.errors.required">Option 3 is required.</span>
+        <span *ngIf="option3.errors.minlength">Option 3 must be at least 3 characters long.</span>
+      </span>
+  </div>
+  <div>
+    Option 4: <input type="text" name="option4" [(ngModel)]="newPoll.options[3].value" required minlength="3" #option4="ngModel">
+    <span *ngIf="option4.invalid && (option4.dirty || option4.touched)" class="errors">
+        <span *ngIf="option4.errors.required">Option 4 is required.</span>
+        <span *ngIf="option4.errors.minlength">Option 4 must be at least 3 characters long.</span>
+      </span>
+  </div>
+  <div>
+    <button (click)="addPoll(); pollForm.reset()" [disabled]="!pollForm.valid">Create Poll</button>
+  </div>
+</form>
+
+{{newPoll | json}}

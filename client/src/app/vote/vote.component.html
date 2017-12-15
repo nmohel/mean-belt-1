@@ -1,0 +1,27 @@
+<div class="top">
+  <a routerLink="/dashboard">Go to Polls</a>
+</div>
+
+<h2>{{currentPoll.question}}</h2>
+<p>Click the Vote button to choose one</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Current Count of Votes</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let opt of currentPoll['options']">
+      <td>{{opt.value}}</td>
+      <td>{{opt.votes}}</td>
+      <td>
+        <form>
+          <input type="submit" (click)="vote(opt._id)" value="Vote">
+        </form>
+      </td>
+    </tr>
+  </tbody>
+</table>

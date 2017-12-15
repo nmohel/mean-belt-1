@@ -1,0 +1,31 @@
+<div class="top">
+  <a routerLink="/create">Create a New Poll</a>
+  <form style="display: inline"><input type="submit" value="Logout" (click)="logout()"></form>
+</div>
+<h2>
+  Current Polls:
+</h2>
+
+<input type="search" name="search" id="search" placeholder="Search">
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Survey Question</th>
+      <th>Date Posted</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let poll of polls">
+      <td>{{poll.creator}}</td>
+      <td><a [routerLink]="['/poll', poll._id]">{{poll.question}}</a></td>
+      <td>{{poll.createdAt | date:'medium'}}</td>
+      <td>
+        <form *ngIf="poll.creator == currentUser">
+          <input type="submit" value="Delete" (click)="deletePoll(poll._id)">
+        </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
